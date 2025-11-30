@@ -1,5 +1,3 @@
-import random
-
 try:
     file_path = "top_english_nouns_lower_10000.txt"
     output_path = "filtered_word_list.txt"
