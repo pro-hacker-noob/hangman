@@ -1,7 +1,7 @@
 word = "string"
 
 
-def hide():
+def hide(word=word):
     return "_" * len(word)
 
 
