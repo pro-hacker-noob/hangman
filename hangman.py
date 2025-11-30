@@ -1,13 +1,12 @@
 word = "string"
+word_len = len(word)
 
 
 def hide(word=word):
-    return "_" * len(word)
+    return "_" * word_len
 
 
 curr = hide()
-
-n = len(word)
 
 
 def guess(letter, curr):
