@@ -12,7 +12,8 @@ curr = hide()
 def guess(letter, curr, word):
     letter = letter.lower()
     word = word.lower()
-
+    if letter not in word:
+        return False
     result = curr[:]
 
     for i, ch in enumerate(word):
