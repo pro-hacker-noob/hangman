@@ -6,8 +6,8 @@ try:
     with open(file_path, "r") as file:
         content = file.read()
         word_list = content.splitlines()
-    the_chosen_one = word_list[random.randint(0, len(word_list) - 1)]
-    print(the_chosen_one)
+        chosen_word = word_list[random.randint(0, len(word_list) - 1)]
+    print(chosen_word)
 
 except FileNotFoundError:
     print(f"Error: The file '{file_path}' was not found.")
