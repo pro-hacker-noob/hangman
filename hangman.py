@@ -38,3 +38,19 @@ def guess(
         result,
         found,
     )  # return updated current_state and whether the letter was found
+
+
+def render(current_state):
+    return " ".join(current_state)  # returns a string representation of current_state
+
+
+def is_won(current_state):
+    return "_" not in current_state
+
+
+def input_letter():
+    while True:
+        letter = input("Enter a letter: ").strip().lower()
+        if len(letter) == 1 and letter.isalpha():
+            return letter
+        print("Invalid input. Please enter a single letter.")
