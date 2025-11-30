@@ -2,46 +2,39 @@ import random
 
 try:
     file_path = "filtered_word_list.txt"
-    with open(file_path, "r") as file:  # open the file in read mode
+    with open(file_path, "r") as file:
         content = file.read()
-        word_list = content.splitlines()  # read words from the file into a list
-        word = random.choice(word_list).strip()  # select a random word from the list
+        word_list = content.splitlines()
+        word = random.choice(word_list).strip()
 except FileNotFoundError:
     print(f"Error: The file '{file_path}' was not found.")
-    word = "ERROR"  # Fallback word if file not found
+    word = "ERROR"
 
 
 def hide(word):
-    return ["_"] * len(
-        word
-    )  # returns a list of underscores representing hidden letters
+    return ["_"] * len(word)
 
 
 current_state = hide(word)
 
 
-def guess(
-    letter, word, current_state=current_state
-):  # returns updated current_state and whether the letter was found
+def guess(letter, word, current_state=current_state):
     letter = letter.lower()
     word = word.lower()
 
-    result = current_state[:]  # list copy
+    result = current_state[:]
     found = False
 
-    for i, ch in enumerate(word):  # iterate through each character in the word
+    for i, ch in enumerate(word):
         if ch == letter:
             result[i] = letter
             found = True
 
-    return (
-        result,
-        found,
-    )  # return updated current_state and whether the letter was found
+    return result, found
 
 
 def render(current_state):
-    return " ".join(current_state)  # returns a string representation of current_state
+    return " ".join(current_state)
 
 
 def is_won(current_state):
