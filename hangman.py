@@ -47,3 +47,42 @@ def input_letter():
         if len(letter) == 1 and letter.isalpha():
             return letter
         print("Invalid input. Please enter a single letter.")
+
+
+def turn(word, current_state, attempts):
+    print("\nCurrent state: " + render(current_state))
+    letter = input_letter()
+    new_state, found = guess(letter, word, current_state)
+
+    if found:
+        print(f"Good guess! The letter '{letter}' is in the word.")
+    else:
+        print(f"Sorry, the letter '{letter}' is not in the word.")
+        attempts -= 1
+
+    return attempts, new_state
+
+
+def is_lost(attempts):
+    return attempts <= 0
+
+
+def main():
+    attempts = 6
+    current_state = hide(word)
+
+    print("Welcome to Hangman!")
+    print(f"You have {attempts} attempts to guess the word.")
+
+    while not is_won(current_state) and not is_lost(attempts):
+        print(f"\nAttempts remaining: {attempts}")
+        attempts, current_state = turn(word, current_state, attempts)
+
+    if is_won(current_state):
+        print("\nCongratulations You've guessed the word: " + word)
+    else:
+        print("\nGame over The correct word was: " + word)
+
+
+if __name__ == "__main__":
+    main()
