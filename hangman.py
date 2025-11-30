@@ -3,12 +3,20 @@ word_len = len(word)
 
 
 def hide(word=word):
-    return "_" * word_len
+    return "_" * len(word)
 
 
 curr = hide()
 
 
-def guess(letter, curr):
+def guess(letter, curr, word):
     letter = letter.lower()
-    return "".join(word[i] if word[i].lower() == letter else curr[i] for i in range(n))
+    word = word.lower()
+
+    result = curr[:]
+
+    for i, ch in enumerate(word):
+        if ch == letter:
+            result[i] = letter
+
+    return result
