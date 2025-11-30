@@ -6,7 +6,11 @@ try:
     with open(file_path, "r") as file:
         content = file.read()
         word_list = content.splitlines()
-        chosen_word = word_list[random.randint(0, len(word_list) - 1)]
+        for i in range(len(word_list)):
+            if len(word_list[i]) >= 5:
+                with open(output_path, "a") as output_file:
+                    output_file.write(word_list[i].strip() + "\n")
+
 
 except FileNotFoundError:
     print(f"Error: The file '{file_path}' was not found.")
