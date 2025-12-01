@@ -1,5 +1,7 @@
 import random
 
+HIDDEN_LETTER = "_"
+
 try:
     file_path = "filtered_word_list.txt"
     with open(file_path, "r") as file:
@@ -12,7 +14,7 @@ except FileNotFoundError:
 
 
 def hide(word):
-    return ["_"] * len(word)
+    return [HIDDEN_LETTER] * len(word)
 
 
 current_state = hide(word)
@@ -38,7 +40,7 @@ def render(current_state):
 
 
 def is_won(current_state):
-    return "_" not in current_state
+    return HIDDEN_LETTER not in current_state
 
 
 def input_letter():
