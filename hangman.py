@@ -7,23 +7,25 @@ try:
     with open(file_path, "r") as file:
         content = file.read()
         word_list = content.splitlines()
-        word = random.choice(word_list).strip()
 except FileNotFoundError:
     print(f"Error: The file '{file_path}' was not found.")
     word = "ERROR"
+    print("Using default word 'ERROR' for the game.")
 except Exception as e:
     print(f"An error occurred: {e}")
     word = "ERROR"
+    print("Using default word 'ERROR' for the game.")
+
+
+def get_word():
+    return random.choice(word_list).strip()
 
 
 def hide(word):
     return [HIDDEN_LETTER] * len(word)
 
 
-current_state = hide(word)
-
-
-def guess(letter, word, current_state=current_state):
+def guess(letter, word, current_state):
     letter = letter.lower()
     word = word.lower()
 
@@ -73,6 +75,7 @@ def is_lost(attempts):
 
 
 def main():
+    word = get_word()
     attempts = 6
     current_state = hide(word)
 
