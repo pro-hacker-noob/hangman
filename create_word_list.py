@@ -7,7 +7,7 @@ try:
         word_list = content.splitlines()
 
         for i in range(len(word_list)):
-            if len(word_list[i]) >= 5:
+            if len(word_list[i]) >= 5 and len(word_list[i]) <= 8:
                 with open(output_path, "a") as output_file:
                     output_file.write(word_list[i].strip() + "\n")
 
