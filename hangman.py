@@ -18,7 +18,7 @@ except Exception as e:
 
 
 def get_word():
-    return random.choice(word_list).strip()
+    return random.choice(word_list).strip().lower()
 
 
 def hide(word):
@@ -28,7 +28,6 @@ def hide(word):
 
 def guess(letter, word, current_state):
     letter = letter.lower()
-    word = word.lower()
 
     result = current_state[:]
     found = False
