@@ -57,9 +57,9 @@ def turn(word, current_state, attempts):
     new_state, found = guess(letter, word, current_state)
 
     if found:
-        print(f"Good guess! The letter '{letter}' is in the word.")
+        print(f"The letter '{letter}' is in the word.")
     else:
-        print(f"Sorry, the letter '{letter}' is not in the word.")
+        print(f"the letter '{letter}' is not in the word.")
         attempts -= 1
 
     return attempts, new_state
@@ -81,9 +81,9 @@ def main():
         attempts, current_state = turn(word, current_state, attempts)
 
     if is_won(current_state):
-        print("\nCongratulations You've guessed the word: " + word)
+        print(f"\nCongratulations You've guessed the word: {word}")
     else:
-        print("\nGame over The correct word was: " + word)
+        print(f"\nGame over The correct word was: {word}")
 
 
 if __name__ == "__main__":
