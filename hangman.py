@@ -27,15 +27,15 @@ def hide(word):
 
 
 def guess(letter, word, current_state):
-    letter = letter.lower()
 
     result = current_state[:]
     found = False
 
-    for i, ch in enumerate(word):
-        if ch == letter:
-            result[i] = letter
-            found = True
+    if letter in word:
+        for i in range(len(word)):
+            if word[i] == letter:
+                result[i] = letter
+                found = True
 
     return result, found
 
