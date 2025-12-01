@@ -22,7 +22,8 @@ def get_word():
 
 
 def hide(word):
-    return [HIDDEN_LETTER] * len(word)
+    global HIDDEN_LETTER
+    return [HIDDEN_LETTER if ch != " " else " " for ch in word]
 
 
 def guess(letter, word, current_state):
@@ -51,6 +52,9 @@ def is_won(current_state):
 def input_letter():
     while True:
         letter = input("Enter a letter: ").strip().lower()
+        if letter.strip().lower() == "exit":
+            print("Exiting the game. Goodbye!")
+            exit()
         if len(letter) == 1 and letter.isalpha():
             return letter
         print("Invalid input. Please enter a single letter.")
@@ -79,7 +83,7 @@ def main():
     attempts = 6
     current_state = hide(word)
 
-    print("Welcome to Hangman!")
+    print("Welcome to Hangman! type 'exit' to quit the game anytime.")
     print(f"You have {attempts} attempts to guess the word.")
 
     while not is_won(current_state) and not is_lost(attempts):
