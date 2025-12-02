@@ -82,7 +82,6 @@ class HangmanGUI:
             self.status_label.config(
                 text=f"Congratulations! You've guessed the word: {self.game.word}"
             )
-            # Disable input after game ends
             self.letter_entry.config(state="disabled")
             self.guess_button.config(state="disabled")
             self.root.after(1500, self.root.quit)
