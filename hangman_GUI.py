@@ -66,7 +66,7 @@ class HangmanGUI:
         self.letter_entry.delete(0, tk.END)
 
         if len(letter) != 1 or not letter.isalpha():
-            self.status_label.config(text="Please enter a single letter (a–z).")
+            self.status_label.config(text="Please enter a single letter.")
             return
 
         found = self.game.guess(letter)
